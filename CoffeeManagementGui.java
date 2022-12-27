@@ -67,6 +67,37 @@ public class CoffeeManagementGui {
         header.getChildren().addAll(line1, title, line2, hb, menu);
         pane.setTop(header);
 
+/**Menu's Choice Section**/
+        GridPane menuSec = new GridPane();
+        menuSec.setPadding(new Insets(30));
+        menuSec.setAlignment(Pos.TOP_CENTER);
+        menuSec.setHgap(20);
+        menuSec.setVgap(20);
+
+        DropShadow shadow = new DropShadow();
+
+        Button[] menuChoice = {new Button("Order", new ImageView("Images/order.png")),
+                new Button("Order List", new ImageView("Images/orderlist.png")),
+                new Button("Coffee", new ImageView("Images/coffee.png")),
+                new Button("Staff", new ImageView("Images/staff.png")),
+                new Button("Administrator", new ImageView("Images/administrator.png")),
+                new Button("Exit Program", new ImageView("Images/exit.png"))};
+
+        Button exit = new Button("Exit Program", new ImageView("Images/exit.png"));
+
+        for(int j = 0; j < menuChoice.length; j++ ) {
+            menuChoice[j].setFont(Font.font("Courier", FontWeight.BOLD , FontPosture.REGULAR, 15));
+            menuChoice[j].setPrefSize(150, 60);
+        }
+
+        menuSec.add(menuChoice[0], 0, 0);
+        menuSec.add(menuChoice[1], 0, 1);
+        menuSec.add(menuChoice[2], 1, 0);
+        menuSec.add(menuChoice[3], 1, 1);
+        menuSec.add(menuChoice[4], 2, 0);
+        menuSec.add(menuChoice[5], 2, 1);
+        pane.setCenter(menuSec);
+//		pane.setBottom(exit);
 
         //Add the pane to the scene and add the scene to the stage
         Scene scene = new Scene(pane, 700, 500);
