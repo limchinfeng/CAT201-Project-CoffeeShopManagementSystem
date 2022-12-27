@@ -131,6 +131,21 @@ public class CoffeeManagementGui {
             OrderListGui.main(orderlist);
         });
 
+        /**Choice 4: Coffee**/
+        //When user move the mouse to the button will have shadow effect
+        menuChoice[2].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
+            menuChoice[2].setEffect(shadow);
+        });
+
+        menuChoice[2].addEventHandler(MouseEvent.MOUSE_EXITED, e->{
+            menuChoice[2].setEffect(null);
+        });
+
+        menuChoice[2].setOnAction(e->{
+            primaryStage.close();
+            CoffeeGui.main(coffee);
+        });
+
         //Add the pane to the scene and add the scene to the stage
         Scene scene = new Scene(pane, 700, 500);
         primaryStage.setTitle("Coffee Shop Management System");
