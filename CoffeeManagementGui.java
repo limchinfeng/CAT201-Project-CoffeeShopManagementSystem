@@ -67,7 +67,7 @@ public class CoffeeManagementGui {
         header.getChildren().addAll(line1, title, line2, hb, menu);
         pane.setTop(header);
 
-/**Menu's Choice Section**/
+        /**Menu's Choice Section**/
         GridPane menuSec = new GridPane();
         menuSec.setPadding(new Insets(30));
         menuSec.setAlignment(Pos.TOP_CENTER);
@@ -99,6 +99,12 @@ public class CoffeeManagementGui {
         pane.setCenter(menuSec);
 //		pane.setBottom(exit);
 
+        /**Choice 1: Order**/
+        //When user move the mouse to the button will have shadow effect
+        menuChoice[0].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
+            menuChoice[0].setEffect(shadow);
+        });
+        
         //Add the pane to the scene and add the scene to the stage
         Scene scene = new Scene(pane, 700, 500);
         primaryStage.setTitle("Coffee Shop Management System");
