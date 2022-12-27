@@ -26,6 +26,8 @@ import javafx.stage.Stage;
 
 public class CoffeeManagementGui {
 
+    public static ArrayList<OrderList> orderlist = new ArrayList<OrderList>(25);
+    public static ArrayList<Coffee> coffee = new ArrayList<Coffee>(20);
     public static void mainMenu(Stage primaryStage) {
 
         BorderPane pane = new BorderPane();
@@ -104,7 +106,16 @@ public class CoffeeManagementGui {
         menuChoice[0].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
             menuChoice[0].setEffect(shadow);
         });
-        
+
+        menuChoice[0].addEventHandler(MouseEvent.MOUSE_EXITED, e->{
+            menuChoice[0].setEffect(null);
+        });
+
+        menuChoice[0].setOnAction(e->{
+            primaryStage.close();
+            OrderGui.main(orderlist, coffee);
+        });
+
         //Add the pane to the scene and add the scene to the stage
         Scene scene = new Scene(pane, 700, 500);
         primaryStage.setTitle("Coffee Shop Management System");
