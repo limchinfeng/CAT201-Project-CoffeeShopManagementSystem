@@ -1,0 +1,34 @@
+<component name="libraryTable">
+  <library name="api-0.1.21">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/api-0.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/awt-0.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/cdi-api-2.0.SP1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/commons-io-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/core-0.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/dom4j-2.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/environment-0.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/impl-0.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/jakarta.activation-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/jakarta.xml.bind-api-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/javassist-3.28.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/javax.activation-api-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/javax.el-api-3.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/javax.inject-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/javax.interceptor-api-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/javax.persistence-api-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/jaxb-api-2.4.0-b180830.0359.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/jaxb-core-3.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/jaxb-impl-3.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/jcabi-log-0.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/jcabi-manifests-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/jsr305-3.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/manifest-0.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/model-0.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/reflections-0.10.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/awt jar java/slf4j-api-1.7.29.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
