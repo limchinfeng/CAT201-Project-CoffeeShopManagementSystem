@@ -28,6 +28,8 @@ public class CoffeeManagementGui {
 
     public static ArrayList<OrderList> orderlist = new ArrayList<OrderList>(25);
     public static ArrayList<Coffee> coffee = new ArrayList<Coffee>(20);
+    public static ArrayList<Staff> staff = new ArrayList<Staff>(25);
+    public static ArrayList<Administrator> administrator = new ArrayList<Administrator>(25);
     public static void mainMenu(Stage primaryStage) {
 
         BorderPane pane = new BorderPane();
@@ -144,6 +146,45 @@ public class CoffeeManagementGui {
         menuChoice[2].setOnAction(e->{
             primaryStage.close();
             CoffeeGui.main(coffee);
+        });
+
+        /**Choice 6: Staff**/
+        menuChoice[3].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
+            menuChoice[3].setEffect(shadow);
+        });
+
+        menuChoice[3].addEventHandler(MouseEvent.MOUSE_EXITED, e->{
+            menuChoice[3].setEffect(null);
+        });
+
+        menuChoice[3].setOnAction(e->{
+            primaryStage.close();
+            StaffGui.main(staff);
+        });
+
+        menuChoice[4].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
+            menuChoice[4].setEffect(shadow);
+        });
+
+        menuChoice[4].addEventHandler(MouseEvent.MOUSE_EXITED, e->{
+            menuChoice[4].setEffect(null);
+        });
+
+        menuChoice[4].setOnAction(e->{
+            primaryStage.close();
+            AdministratorGui.main(administrator);
+        });
+
+        menuChoice[5].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
+            menuChoice[5].setEffect(shadow);
+        });
+
+        menuChoice[5].addEventHandler(MouseEvent.MOUSE_EXITED, e->{
+            menuChoice[5].setEffect(null);
+        });
+
+        menuChoice[5].setOnAction(e->{
+            primaryStage.close();
         });
 
         //Add the pane to the scene and add the scene to the stage
