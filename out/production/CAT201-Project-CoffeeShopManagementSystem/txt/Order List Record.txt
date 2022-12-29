@@ -1,0 +1,5 @@
+cappuccino	Hot	Small	Double Chocolate,Mocha,.	14.0
+black	Hot	Medium	Double Chocolate,Mocha,.	12.0
+latte	Hot	Small	.	10.0
+cappuccino	Cold	Large	Berries,.	17.0
+latte	Hot	Large	Double Chocolate,Mocha,Caramel,.	17.0

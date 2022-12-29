@@ -33,10 +33,31 @@ public class CoffeeManagementGui {
     public static void mainMenu(Stage primaryStage) {
         //if order array list is empty, initialize the list with 4 object
         if (orderlist.isEmpty()) {
-            orderlist.add(new OrderList("cappuccino", "Small", "Hot", "ad df", 11));
-            orderlist.add(new OrderList("latte", "Large", "Cold", "ad d", 30));
-            orderlist.add(new OrderList("black", "Medium", "Hot", "ad d", 28));
-            orderlist.add(new OrderList("latte", "Large", "Hot", "adss s", 15));
+//            orderlist.add(new OrderList("cappuccino", "Small", "Hot", "ad df", 11));
+//            orderlist.add(new OrderList("latte", "Large", "Cold", "ad d", 30));
+//            orderlist.add(new OrderList("black", "Medium", "Hot", "ad d", 28));
+//            orderlist.add(new OrderList("latte", "Large", "Hot", "adss s", 15));
+
+            try{
+                double price;
+                String cffe,type,size,addon;
+                BufferedReader br = new BufferedReader(new FileReader("txt/Order List Record.txt"));
+                String line = null;
+                while((line = br.readLine()) != null)
+                {
+                    String tmp[] = line.split("\t");
+                    cffe = tmp[0];
+                    size = tmp[1];
+                    type = tmp[2];
+                    addon = tmp[3];
+                    price = Double.parseDouble(tmp[4]);
+                    orderlist.add(new OrderList(cffe,size,type,addon,price));
+                    System.out.println(cffe+" "+price+" "+type+" "+addon+" "+price);
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
 
         //if administrator array list is empty, initialize the list with 4 object
