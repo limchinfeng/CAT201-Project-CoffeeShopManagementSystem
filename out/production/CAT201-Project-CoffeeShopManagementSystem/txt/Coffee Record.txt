@@ -1,0 +1,3 @@
+cappuccino	12.0
+latte	10.0
+black	8.0

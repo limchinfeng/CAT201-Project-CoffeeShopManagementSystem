@@ -85,10 +85,27 @@ public class CoffeeManagementGui {
 
         //if coffee array list is empty, initialize the list with 4 object
         if (coffee.isEmpty()) {
-			coffee.add(new Coffee("cappuccino",12));
-			coffee.add(new Coffee("latte", 10));
-			coffee.add(new Coffee("black", 8));
-			coffee.add(new Coffee("Blood Bank",50));
+//			coffee.add(new Coffee("cappuccino",12));
+//			coffee.add(new Coffee("latte", 10));
+//			coffee.add(new Coffee("black", 8));
+//			coffee.add(new Coffee("Blood Bank",50));
+
+            try{
+                double price;
+                String cffe;
+                BufferedReader br = new BufferedReader(new FileReader("txt/Coffee Record.txt"));
+                String line = null;
+                while((line = br.readLine()) != null)
+                {
+                    String tmp[] = line.split("\t");
+                    cffe = tmp[0];
+                    price = Double.parseDouble(tmp[1]);
+                    coffee.add(new Coffee(cffe,price));
+                    System.out.println(cffe+" "+price);
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         //if Staff array list is empty, initialize the list with 3 object
