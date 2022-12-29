@@ -110,10 +110,30 @@ public class CoffeeManagementGui {
 
         //if Staff array list is empty, initialize the list with 3 object
         if(staff.isEmpty()) {
-			staff.add(new Staff("378", "Lim Chin Feng", "Manager", "Male", 6000));
-			staff.add(new Staff("086", "Khoo Jia Xin", "Waiter", "Female", 4500));
-			staff.add(new Staff("412", "Lee Jia Qian", "Cashier", "Female", 4500));
-			staff.add(new Staff("143", "Tan Wei Xiang", "Barista", "Male", 5000));
+//			staff.add(new Staff("378", "Lim Chin Feng", "Manager", "Male", 6000));
+//			staff.add(new Staff("086", "Khoo Jia Xin", "Waiter", "Female", 4500));
+//			staff.add(new Staff("412", "Lee Jia Qian", "Cashier", "Female", 4500));
+//			staff.add(new Staff("143", "Tan Wei Xiang", "Barista", "Male", 5000));
+
+            try{
+                int salary;
+                String id, name, designation, sex;
+                BufferedReader br = new BufferedReader(new FileReader("txt/Staff Record.txt"));
+                String line = null;
+                while((line = br.readLine()) != null)
+                {
+                    String tmp[] = line.split("\t");
+                    id = tmp[0];
+                    name = tmp[1];
+                    designation = tmp[2];
+                    sex = tmp[3];
+                    salary = Integer.parseInt(tmp[4]);
+                    staff.add(new Staff(id,name,designation,sex,salary));
+                    System.out.println(id+" "+name+" "+designation+" "+sex+" "+salary);
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         BorderPane pane = new BorderPane();

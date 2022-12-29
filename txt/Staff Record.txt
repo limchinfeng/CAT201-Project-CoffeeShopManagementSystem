@@ -1,0 +1,4 @@
+378	Lim Chin Feng	Manager	Male	6000
+086	Khoo Jia Xin	Waiter	Female	4500
+412	Lee Jia Qian	Cashier	Female	4500
+143	Tan Wei Xiang	Barista	Male	5000
