@@ -62,9 +62,25 @@ public class CoffeeManagementGui {
 
         //if administrator array list is empty, initialize the list with 4 object
         if (administrator.isEmpty()) {
-			administrator.add(new Administrator(157968,157968));
-			administrator.add(new Administrator(123,123));
-			administrator.add(new Administrator(1,1));
+//			administrator.add(new Administrator(157968,157968));
+//			administrator.add(new Administrator(123,123));
+//			administrator.add(new Administrator(1,1));
+
+            try{
+                int username, password;
+                BufferedReader br = new BufferedReader(new FileReader("txt/Administrator Record.txt"));
+                String line = null;
+                while((line = br.readLine()) != null)
+                {
+                    String tmp[] = line.split("\t");
+                    username = Integer.parseInt(tmp[0]);
+                    password = Integer.parseInt(tmp[1]);
+                    administrator.add(new Administrator(username,password));
+                    System.out.println(username+" "+password);
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         //if coffee array list is empty, initialize the list with 4 object
