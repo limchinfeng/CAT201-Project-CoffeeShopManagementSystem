@@ -119,5 +119,23 @@ public class OrderGui {
             addOnButton[j].setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
             addOnColumn.getChildren().add(addOnButton[j]);
         }
+
+
+        Button mainMenu = new Button("Back to Menu", new ImageView("Images/home.png"));
+
+        showCoffee.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        deleteOrder.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        orderCoffee.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        printOrder.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        addOrder.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        orderPayment.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        orderMenu.getChildren().addAll(deleteOrder,showCoffee,orderCoffee, printOrder,addOrder,orderPayment);
+        orderMenu.setAlignment(Pos.CENTER);
+
+        header.getChildren().addAll(line1, title, line2, orderMenu);
+        pane.setTop(header);
+        centre.getChildren().addAll(coffeeColumn, sizeColumn, typeColumn,addOnColumn );
+        pane.setCenter(centre);
+        pane.setBottom(mainMenu);
     }
 }
