@@ -157,5 +157,21 @@ public class OrderGui {
         paymentOrder.add(btPayment, 0, 2);
 
         Scene paymentScene = new Scene(paymentOrder);
+
+        //Delete Coffee details from the user input
+        GridPane delOrder = new GridPane();
+        delOrder.setPadding(new Insets(20));
+        delOrder.setHgap(5);
+        delOrder.setVgap(5);
+
+        TextField delname = new TextField();
+        Button btDel = new Button("Delete");
+
+        delOrder.add(new Text("Please enter the order index to be deleted"), 0, 0);
+        delOrder.add(delname, 0, 1);
+        delOrder.add(btDel, 0, 2);
+
+        Scene delScene = new Scene(delOrder);
+        
     }
 }
