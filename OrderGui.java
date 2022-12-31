@@ -137,5 +137,25 @@ public class OrderGui {
         centre.getChildren().addAll(coffeeColumn, sizeColumn, typeColumn,addOnColumn );
         pane.setCenter(centre);
         pane.setBottom(mainMenu);
+
+
+        //Payment
+        GridPane paymentOrder = new GridPane();
+        paymentOrder.setPadding(new Insets(20));
+        paymentOrder.setHgap(5);
+        paymentOrder.setVgap(5);
+
+        TextField paymentAmount = new TextField();
+
+        Button btPayment = new Button("Pay");
+        Button btPrint = new Button("Print");
+
+        paymentOrder.add(new Text("Payment"), 0, 0);
+        paymentOrder.add(new Text("Please enter payment amount :RM"), 0, 1);
+        paymentOrder.add(paymentAmount, 1, 1);
+        paymentOrder.add(btPrint,2,2);
+        paymentOrder.add(btPayment, 0, 2);
+
+        Scene paymentScene = new Scene(paymentOrder);
     }
 }
