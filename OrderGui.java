@@ -172,6 +172,29 @@ public class OrderGui {
         delOrder.add(btDel, 0, 2);
 
         Scene delScene = new Scene(delOrder);
+
+        // delete single order
+        deleteOrder.setOnAction(e->{
+
+            promptStage.setScene(delScene);
+            promptStage.setTitle("Delete Record");
+            promptStage.show();
+
+            btDel.setOnAction(ev->{
+                for(int i = 0; i < order.size() ; i++) {
+                    if (order.get(i).getIndex() == Integer.parseInt(delname.getText())) {
+                        index = i;
+                        order.get(0).setTotal(order.get(i).getPrice());
+                        order.remove(index);
+                        JOptionPane.showMessageDialog(null, "The specific Coffee's record have been deleted from "
+                                + "the list. You can check the list by clicking the Existing Coffees List button");
+                        break;
+                    }
+                }
+                promptStage.close();
+            });
+
+        });
         
     }
 }
