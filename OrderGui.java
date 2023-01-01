@@ -221,5 +221,10 @@ public class OrderGui {
             pane.setCenter(table);
 
         });
+
+        // show order page
+        orderCoffee.setOnAction(e->{
+            pane.setCenter(centre);
+        });
     }
 }
