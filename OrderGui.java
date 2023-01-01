@@ -226,5 +226,67 @@ public class OrderGui {
         orderCoffee.setOnAction(e->{
             pane.setCenter(centre);
         });
+
+
+        // current order
+        printOrder.setOnAction(e->{
+
+            /**Table view of order list's details**/
+            TableView<Order> OrderTable = new TableView<Order>();
+
+            TableColumn<Order, Integer> column1 = new TableColumn<Order, Integer>("Index");
+            column1.setCellValueFactory(new PropertyValueFactory<Order, Integer>("index"));
+            column1.setPrefWidth(50);
+            column1.setResizable(false);
+
+            TableColumn<Order, String> column2 = new TableColumn<Order, String>("Coffee");
+            column2.setCellValueFactory(new PropertyValueFactory<Order, String>("coffee"));
+            column2.setPrefWidth(140);
+            column2.setResizable(false);
+
+            TableColumn<Order, String> column3 = new TableColumn<Order, String>("Size");
+            column3.setCellValueFactory(new PropertyValueFactory<Order, String>("size"));
+            column3.setPrefWidth(100);
+            column3.setResizable(false);
+
+            TableColumn<Order, String> column4 = new TableColumn<Order, String>("Type");
+            column4.setCellValueFactory(new PropertyValueFactory<Order, String>("type"));
+            column4.setPrefWidth(100);
+            column4.setResizable(false);
+
+            TableColumn<Order, String> column5 = new TableColumn<Order, String>("Add On");
+            column5.setCellValueFactory(new PropertyValueFactory<Order, String>("add"));
+            column5.setPrefWidth(180);
+            column5.setResizable(false);
+
+            TableColumn<Order, Double> column6 = new TableColumn<Order, Double>("Price");
+            column6.setCellValueFactory(new PropertyValueFactory<Order, Double>("price"));
+            column6.setPrefWidth(100);
+            column6.setResizable(false);
+
+            OrderTable.getColumns().addAll(column1, column2, column3, column4, column5, column6);
+
+            for(int i = 0; i < order.size(); i ++) {
+                OrderTable.getItems().add(order.get(i));
+            }
+
+            String totalPrice="";
+            if(order.isEmpty())
+            {
+                totalPrice = "Total : RM0.00";
+            }
+            else {
+                totalPrice = "Total : RM" + Double.toString(order.get(0).getTotal());
+            }
+
+            System.out.println(totalPrice);
+            Label totalOrder = new Label(totalPrice, new ImageView("Images/price.png"));
+
+            VBox table = new VBox(5);
+            table.setPadding(new Insets(8));
+            table.getChildren().addAll(totalOrder, OrderTable);
+            pane.setCenter(table);
+
+        });
     }
 }
