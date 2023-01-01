@@ -288,5 +288,66 @@ public class OrderGui {
             pane.setCenter(table);
 
         });
+
+        // add order
+        addOrder.setOnAction(e->{
+            double total=0;
+            int AddOn = 0;
+            String c="", t="", s="", a=".";
+
+            for(int j=0; j<coffee.size(); j++)
+            {
+                if(coffeeButton[j].isSelected())
+                {
+                    c = coffeeButton[j].getText();
+                    total+= coffee.get(j).getPrice();
+                    break;
+                }
+            }
+
+            for(int j=0; j<type.length; j++)
+            {
+                if(typeButton[j].isSelected())
+                {
+                    t = typeButton[j].getText();
+                    break;
+                }
+            }
+
+            for(int j=0; j<size.length; j++)
+            {
+                if(sizeButton[j].isSelected())
+                {
+                    s = sizeButton[j].getText();
+
+                    if(s == "Small")
+                    {
+                        break;
+                    }
+                    else if(s == "Medium")
+                    {
+                        total += 2;
+                    }
+                    else
+                    {
+                        total += 4;
+                    }
+                }
+            }
+
+            for(int j=0; j<addOn.length; j++)
+            {
+                if(addOnButton[j].isSelected()) {
+                    AddOn += 1;
+                    a = addOnButton[j].getText()+","+a;
+                }
+            }
+            total+= AddOn;
+            if(total != 0 && c!="" && s!="" && t!="")
+                order.add(new Order(c,s,t,a,total));
+
+            System.out.println(c +" "+s+" "+t+" "+a+" "+total);
+
+        });
     }
 }
