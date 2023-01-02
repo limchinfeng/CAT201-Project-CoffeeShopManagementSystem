@@ -349,5 +349,70 @@ public class OrderGui {
             System.out.println(c +" "+s+" "+t+" "+a+" "+total);
 
         });
+
+
+        orderPayment.setOnAction(e->{
+            double total = 0;
+            for(int j=0; j< order.size(); j++)
+            {
+                total += order.get(j).getPrice();
+            }
+
+            promptStage.setScene(paymentScene);
+            promptStage.setTitle("Payment : RM" + total);
+            promptStage.show();
+
+            btPayment.setOnAction(ev->{
+                double T=0;
+                for(int j=0; j< order.size(); j++)
+                {
+                    T += order.get(j).getPrice();
+                }
+                double customerPayment = Double.parseDouble(paymentAmount.getText());
+                double remainder = customerPayment - T;
+                String c="", t="", s="", a=".";
+                double p=0.0;
+
+                if (remainder < 0)
+                {
+                    JOptionPane.showMessageDialog(null, "Your payment should be more than total price : RM" + T + ". Please pay again");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Thank you! Remainder :RM" + remainder);
+                    for(int j=0; j<order.size(); j++)
+                    {
+                        c = order.get(j).getCoffee();
+                        t = order.get(j).getType();
+                        s = order.get(j).getSize();
+                        a = order.get(j).getAdd();
+                        p = order.get(j).getPrice();
+                        orderlist.add(new OrderList(c, t, s, a, p));
+                    }
+                    promptStage.close();
+                    stage.close();
+                    CoffeeManagementGui.mainMenu(stage);
+                }
+            });
+
+            btPrint.setOnAction(ev->{
+                try {
+                    FileWriter writefile = new FileWriter("txt/Order Record.txt");
+
+                    for(int i = 0; i < order.size() ; i++) {
+                        writefile.write(order.get(i).getCoffee()+"\t"+ order.get(i).getSize()+"\t"+
+                                order.get(i).getType()+"\t"+ order.get(i).getAdd()+"\t"+order.get(i).getPrice()+"\n");
+                    }
+
+                    writefile.close();
+                    JOptionPane.showMessageDialog(null, "Successfully write information into the text file.");
+                }
+
+                catch (IOException err) {
+                    JOptionPane.showMessageDialog(null, "An error occurred when writing into the file.");
+                    err.printStackTrace();
+                }
+            });
+
+        });
     }
 }
