@@ -414,5 +414,21 @@ public class OrderGui {
             });
 
         });
+
+
+        mainMenu.setOnAction(e->{
+            stage.close();
+            CoffeeManagementGui.mainMenu(stage);
+        });
+
+
+        pane.setStyle("-fx-background-color: #ecf4f4");
+        Scene scene = new Scene(pane, 700, 500);
+        stage.setTitle("Order Section");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+
     }
+    
 }
