@@ -26,7 +26,23 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class CoffeeGui {
+    private static int index;
+    @SuppressWarnings("unchecked")
     public static void main(ArrayList<Coffee> coffee) {
 
+        Stage stage = new Stage();
+        Stage promptStage = new Stage();
+
+        BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(10));
+
+        /**Header Section**/
+        VBox header = new VBox(5);
+        header.setPadding(new Insets(10));
+        header.setAlignment(Pos.CENTER);
+        Separator line1 = new Separator();
+        Separator line2 = new Separator();
+        Text title = new Text(320, 100, "Coffee Section");
+        title.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 25));
     }
 }
