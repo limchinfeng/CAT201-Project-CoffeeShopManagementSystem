@@ -62,5 +62,58 @@ public class CoffeeGui {
         header.getChildren().addAll(line1, title, line2, CoffeeMenu);
         pane.setTop(header);
         pane.setBottom(mainMenu);
+
+
+        //To prompt staff's details from the user
+        GridPane coffeePrompt = new GridPane();
+        coffeePrompt.setPadding(new Insets(20));
+        coffeePrompt.setHgap(5);
+        coffeePrompt.setVgap(5);
+
+        TextField cf = new TextField();
+        TextField price = new TextField();
+        Button btAdd = new Button("Add Coffee");
+
+        coffeePrompt.add(new Text("Key in the coffee's details"), 0, 0);
+        coffeePrompt.add(new Label("Enter coffee name: "), 0, 1);
+        coffeePrompt.add(cf, 1, 1);
+        coffeePrompt.add(new Label("Enter coffee price: "), 0, 2);
+        coffeePrompt.add(price, 1, 2);
+        coffeePrompt.add(btAdd, 1, 3);
+
+        Scene addCoffeeScene = new Scene(coffeePrompt);
+
+
+        //Delete Coffee details from the user input
+        GridPane delCoffee = new GridPane();
+        delCoffee.setPadding(new Insets(20));
+        delCoffee.setHgap(5);
+        delCoffee.setVgap(5);
+
+        TextField delname = new TextField();
+        Button btDel = new Button("Delete");
+
+        delCoffee.add(new Text("Please enter the coffee name to be deleted"), 0, 0);
+        delCoffee.add(delname, 0, 1);
+        delCoffee.add(btDel, 0, 2);
+
+        Scene delCoffeeScene = new Scene(delCoffee);
+
+
+        newCoffee.setOnAction(e->{
+
+            promptStage.setScene(addCoffeeScene);
+            promptStage.setTitle("Coffee Details");
+            promptStage.show();
+
+            btAdd.setOnAction(ev->{
+                String c = cf.getText();
+                double p = Double.parseDouble(price.getText());
+                coffee.add(new Coffee(c,p));
+                JOptionPane.showMessageDialog(null, "The new Coffee's record have been added to "
+                        + "the list. You can check the list by clicking the Existing Coffees List button");
+                promptStage.close();
+            });
+        });
     }
 }
