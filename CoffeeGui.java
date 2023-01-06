@@ -115,5 +115,50 @@ public class CoffeeGui {
                 promptStage.close();
             });
         });
+
+
+        showCoffeeList.setOnAction(e->{
+
+            /**Table view of Coffee's details**/
+            TableView<Coffee> CoffeeTable = new TableView<Coffee>();
+            TableColumn<Coffee, String> column1 = new TableColumn<Coffee, String>("Coffee");
+            column1.setCellValueFactory(new PropertyValueFactory<Coffee, String>("coffee"));
+            column1.setPrefWidth(340);
+            column1.setResizable(false);
+
+            TableColumn<Coffee, Integer> column2 = new TableColumn<Coffee, Integer>("Price");
+            column2.setCellValueFactory(new PropertyValueFactory<Coffee, Integer>("price"));
+            column2.setPrefWidth(330);
+            column2.setResizable(false);
+
+            CoffeeTable.getColumns().addAll(column1, column2);
+
+            for(int i = 0; i < coffee.size(); i ++) {
+                CoffeeTable.getItems().add(coffee.get(i));
+            }
+
+            VBox table = new VBox(CoffeeTable);
+            table.setPadding(new Insets(8));
+            pane.setCenter(table);
+        });
+
+
+        deleteCoffee.setOnAction(e->{
+            promptStage.setScene(delCoffeeScene);
+            promptStage.setTitle("Delete Record");
+            promptStage.show();
+
+            btDel.setOnAction(ev->{
+                for(int i = 0; i < coffee.size() ; i++) {
+                    if (coffee.get(i).getCoffee().equals(delname.getText())) {
+                        index = i;
+                        coffee.remove(index);
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "The specific Coffee's record have been deleted from "
+                        + "the list. You can check the list by clicking the Existing Coffees List button");
+                promptStage.close();
+            });
+        });
     }
 }
