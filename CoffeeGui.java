@@ -44,5 +44,23 @@ public class CoffeeGui {
         Separator line2 = new Separator();
         Text title = new Text(320, 100, "Coffee Section");
         title.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 25));
+
+        /**Button Section**/
+        HBox CoffeeMenu = new HBox(10);
+        Button newCoffee = new Button("Add New Coffee", new ImageView("Images/add.png"));
+        Button showCoffeeList = new Button("Existing Coffee List", new ImageView("Images/list.png"));
+        Button deleteCoffee = new Button("Delete Coffee Record",new ImageView("Images/delete.png"));
+        Button printCoffeeList = new Button("Print",new ImageView("Images/txt.png"));
+        Button mainMenu = new Button("Back to Menu", new ImageView("Images/home.png"));
+        newCoffee.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        showCoffeeList.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        deleteCoffee.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        printCoffeeList.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        CoffeeMenu.getChildren().addAll(newCoffee, showCoffeeList,deleteCoffee,printCoffeeList);
+        CoffeeMenu.setAlignment(Pos.CENTER);
+
+        header.getChildren().addAll(line1, title, line2, CoffeeMenu);
+        pane.setTop(header);
+        pane.setBottom(mainMenu);
     }
 }
