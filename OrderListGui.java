@@ -61,5 +61,34 @@ public class OrderListGui {
         HBox bottom = new HBox(5);
         bottom.getChildren().add(mainMenu);
         pane.setBottom(bottom);
+
+
+        //To prompt staff's details from the user
+        GridPane addOrderprompt = new GridPane();
+        addOrderprompt.setPadding(new Insets(20));
+        addOrderprompt.setHgap(5);
+        addOrderprompt.setVgap(5);
+
+        TextField cf = new TextField();
+        TextField size = new TextField();
+        TextField type = new TextField();
+        TextField add = new TextField();
+        TextField price = new TextField();
+        Button btAdd = new Button("Add New Order");
+
+        addOrderprompt.add(new Text("Key in the order's details"), 0, 0);
+        addOrderprompt.add(new Label("Enter coffee name: "), 0, 1);
+        addOrderprompt.add(cf, 1, 1);
+        addOrderprompt.add(new Label("Enter coffee size: "), 0, 2);
+        addOrderprompt.add(size, 1, 2);
+        addOrderprompt.add(new Label("Enter coffee type: "), 0, 3);
+        addOrderprompt.add(type, 1, 3);
+        addOrderprompt.add(new Label("Enter coffee add on: "), 0, 4);
+        addOrderprompt.add(add, 1, 4);
+        addOrderprompt.add(new Label("Enter coffee price: "), 0, 5);
+        addOrderprompt.add(price, 1, 5);
+        addOrderprompt.add(btAdd, 1, 6);
+
+        Scene addOrderpromptScene = new Scene(addOrderprompt);
     }
 }
