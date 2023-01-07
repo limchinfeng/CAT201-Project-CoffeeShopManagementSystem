@@ -1,6 +1,6 @@
-import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -160,5 +160,38 @@ public class CoffeeGui {
                 promptStage.close();
             });
         });
+
+
+        printCoffeeList.setOnAction(e->{
+            try {
+                FileWriter writefile = new FileWriter("txt/Coffee Record.txt");
+
+                for(int i = 0; i < coffee.size() ; i++) {
+                    writefile.write(coffee.get(i).getCoffee()+"\t"+coffee.get(i).getPrice()+"\n");
+                }
+
+                writefile.close();
+                JOptionPane.showMessageDialog(null, "Successfully write information into the text file.");
+            }
+
+            catch (IOException ev) {
+                JOptionPane.showMessageDialog(null, "An error occurred when writing into the file.");
+                ev.printStackTrace();
+            }
+        });
+
+
+        mainMenu.setOnAction(e->{
+            stage.close();
+            CoffeeManagementGui.mainMenu(stage);
+        });
+
+
+        pane.setStyle("-fx-background-color: #ecf4f4");
+        Scene scene = new Scene(pane, 700, 500);
+        stage.setTitle("Coffee Section");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 }
