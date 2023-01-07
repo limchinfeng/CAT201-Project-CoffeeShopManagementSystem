@@ -39,5 +39,27 @@ public class OrderListGui {
         Separator line2 = new Separator();
         Text title = new Text(320, 100, "Order List Section");
         title.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 25));
+
+        /**Button Section**/
+        HBox orderListMenu = new HBox(10);
+        Button newOrderRecord = new Button("Add New Order", new ImageView("Images/add.png"));
+        Button showOrderList = new Button("Existing Order List", new ImageView("Images/list.png"));
+        Button delOrderRecord = new Button("Delete Order Record",new ImageView("Images/delete.png"));
+        Button PrintOrderList = new Button("Print",new ImageView("Images/txt.png"));
+        Button mainMenu = new Button("Back to Menu", new ImageView("Images/home.png"));
+        newOrderRecord.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        showOrderList.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        delOrderRecord.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        PrintOrderList.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        orderListMenu.getChildren().addAll(newOrderRecord, showOrderList,delOrderRecord,PrintOrderList);
+        orderListMenu.setAlignment(Pos.CENTER);
+
+
+        header.getChildren().addAll(line1, title, line2, orderListMenu);
+        pane.setTop(header);
+
+        HBox bottom = new HBox(5);
+        bottom.getChildren().add(mainMenu);
+        pane.setBottom(bottom);
     }
 }
