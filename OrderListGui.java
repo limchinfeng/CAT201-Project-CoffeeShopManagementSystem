@@ -184,5 +184,27 @@ public class OrderListGui {
             table.getChildren().addAll(totalOrderAmount,OrderListTable);
             pane.setCenter(table);
         });
+
+        delOrderRecord.setOnAction(e->{
+            promptStage.setScene(delOrderScene);
+            promptStage.setTitle("Delete Record");
+            promptStage.show();
+
+            btDel.setOnAction(ev->{
+                for(int i = 0; i < orderlist.size() ; i++) {
+                    if (orderlist.get(i).getIndex() == Integer.parseInt(delname.getText())) {
+                        index = i;
+                        orderlist.get(index).setTotal(orderlist.get(index).getPrice());
+                        orderlist.remove(index);
+                        JOptionPane.showMessageDialog(null, "The specific order's record have been deleted from "
+                                + "the list. You can check the list by clicking the Existing Orders List button");
+                        break;
+                    }
+                }
+//                JOptionPane.showMessageDialog(null, "The specific order's record have been deleted from "
+//                        + "the list. You can check the list by clicking the Existing Orders List button");
+                promptStage.close();
+            });
+        });
     }
 }
