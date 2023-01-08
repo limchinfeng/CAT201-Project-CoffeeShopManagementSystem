@@ -117,11 +117,11 @@ public class OrderListGui {
                 double p=0;
                 String c="", t="", s="", a=".";
                 c = cf.getText();
-                s = size.getText();
                 t = type.getText();
+                s = size.getText();
                 a = add.getText();
                 p = Double.parseDouble(price.getText());
-                orderlist.add(new OrderList(c,s,t,a,p));
+                orderlist.add(new OrderList(c,t,s,a,p));
                 JOptionPane.showMessageDialog(null, "The new order's record have been added to "
                         + "the list. You can check the list by clicking the Existing Orders List button");
                 promptStage.close();
@@ -143,12 +143,12 @@ public class OrderListGui {
             column2.setPrefWidth(140);
             column2.setResizable(false);
 
-            TableColumn<OrderList, String> column3 = new TableColumn<OrderList, String>("Size");
+            TableColumn<OrderList, String> column3 = new TableColumn<OrderList, String>("Type");
             column3.setCellValueFactory(new PropertyValueFactory<OrderList, String>("size"));
             column3.setPrefWidth(100);
             column3.setResizable(false);
 
-            TableColumn<OrderList, String> column4 = new TableColumn<OrderList, String>("Type");
+            TableColumn<OrderList, String> column4 = new TableColumn<OrderList, String>("Size");
             column4.setCellValueFactory(new PropertyValueFactory<OrderList, String>("type"));
             column4.setPrefWidth(100);
             column4.setResizable(false);
