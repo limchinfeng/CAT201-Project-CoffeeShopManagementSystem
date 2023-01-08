@@ -127,5 +127,62 @@ public class OrderListGui {
                 promptStage.close();
             });
         });
+
+        showOrderList.setOnAction(e->{
+
+            /**Table view of order list's details**/
+            TableView<OrderList> OrderListTable = new TableView<OrderList>();
+
+            TableColumn<OrderList, Integer> column1 = new TableColumn<OrderList, Integer>("Index");
+            column1.setCellValueFactory(new PropertyValueFactory<OrderList, Integer>("index"));
+            column1.setPrefWidth(50);
+            column1.setResizable(false);
+
+            TableColumn<OrderList, String> column2 = new TableColumn<OrderList, String>("Coffee");
+            column2.setCellValueFactory(new PropertyValueFactory<OrderList, String>("coffee"));
+            column2.setPrefWidth(140);
+            column2.setResizable(false);
+
+            TableColumn<OrderList, String> column3 = new TableColumn<OrderList, String>("Size");
+            column3.setCellValueFactory(new PropertyValueFactory<OrderList, String>("size"));
+            column3.setPrefWidth(100);
+            column3.setResizable(false);
+
+            TableColumn<OrderList, String> column4 = new TableColumn<OrderList, String>("Type");
+            column4.setCellValueFactory(new PropertyValueFactory<OrderList, String>("type"));
+            column4.setPrefWidth(100);
+            column4.setResizable(false);
+
+            TableColumn<OrderList, String> column5 = new TableColumn<OrderList, String>("Add On");
+            column5.setCellValueFactory(new PropertyValueFactory<OrderList, String>("add"));
+            column5.setPrefWidth(180);
+            column5.setResizable(false);
+
+            TableColumn<OrderList, Double> column6 = new TableColumn<OrderList, Double>("Price");
+            column6.setCellValueFactory(new PropertyValueFactory<OrderList, Double>("price"));
+            column6.setPrefWidth(100);
+            column6.setResizable(false);
+
+            OrderListTable.getColumns().addAll(column1, column2, column3, column4, column5, column6);
+
+            for(int i = 0; i < orderlist.size(); i ++) {
+                OrderListTable.getItems().add(orderlist.get(i));
+            }
+
+            String TotalAmount="";
+            if(orderlist.isEmpty())
+            {
+                TotalAmount = "Total : RM0.00";
+            }
+            else {
+                TotalAmount = "Total : RM" + Double.toString(orderlist.get(0).getTotal());
+            }
+            Label totalOrderAmount = new Label(TotalAmount, new ImageView("Images/price.png"));
+
+            VBox table = new VBox(5);
+            table.setPadding(new Insets(8));
+            table.getChildren().addAll(totalOrderAmount,OrderListTable);
+            pane.setCenter(table);
+        });
     }
 }
