@@ -206,5 +206,26 @@ public class OrderListGui {
                 promptStage.close();
             });
         });
+
+
+        // write order list to text file
+        PrintOrderList.setOnAction(e->{
+            try {
+                FileWriter writefile = new FileWriter("txt/Order List Record.txt");
+
+                for(int i = 0; i < orderlist.size() ; i++) {
+                    writefile.write(orderlist.get(i).getCoffee()+"\t"+ orderlist.get(i).getSize()+"\t"+
+                            orderlist.get(i).getType()+"\t"+ orderlist.get(i).getAdd()+"\t"+orderlist.get(i).getPrice()+"\n");
+                }
+
+                writefile.close();
+                JOptionPane.showMessageDialog(null, "Successfully write information into the text file.");
+            }
+
+            catch (IOException ev) {
+                JOptionPane.showMessageDialog(null, "An error occurred when writing into the file.");
+                ev.printStackTrace();
+            }
+        });
     }
 }
