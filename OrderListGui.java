@@ -90,5 +90,42 @@ public class OrderListGui {
         addOrderprompt.add(btAdd, 1, 6);
 
         Scene addOrderpromptScene = new Scene(addOrderprompt);
+
+
+        //Delete lab details from the user input
+        GridPane delOrder = new GridPane();
+        delOrder.setPadding(new Insets(20));
+        delOrder.setHgap(5);
+        delOrder.setVgap(5);
+
+        TextField delname = new TextField();
+        Button btDel = new Button("Delete");
+
+        delOrder.add(new Text("Please enter the order list index to be deleted"), 0, 0);
+        delOrder.add(delname, 0, 1);
+        delOrder.add(btDel, 0, 2);
+
+        Scene delOrderScene = new Scene(delOrder);
+
+        newOrderRecord.setOnAction(e->{
+
+            promptStage.setScene(addOrderpromptScene);
+            promptStage.setTitle("New Order Details");
+            promptStage.show();
+
+            btAdd.setOnAction(ev->{
+                double p=0;
+                String c="", t="", s="", a=".";
+                c = cf.getText();
+                s = size.getText();
+                t = type.getText();
+                a = add.getText();
+                p = Double.parseDouble(price.getText());
+                orderlist.add(new OrderList(c,s,t,a,p));
+                JOptionPane.showMessageDialog(null, "The new order's record have been added to "
+                        + "the list. You can check the list by clicking the Existing Orders List button");
+                promptStage.close();
+            });
+        });
     }
 }
