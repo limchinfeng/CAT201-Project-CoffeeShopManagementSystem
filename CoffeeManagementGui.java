@@ -291,11 +291,6 @@ public class CoffeeManagementGui {
             primaryStage.close();
         });
 
-        /**Choice 7: Exit**/
-        exit.setOnAction(e->{
-            primaryStage.close();
-        });
-
         //Add the pane to the scene and add the scene to the stage
         Scene scene = new Scene(pane, 700, 500);
         primaryStage.setTitle("Coffee Shop Management System");
