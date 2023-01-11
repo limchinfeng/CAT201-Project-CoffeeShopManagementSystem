@@ -43,9 +43,21 @@ public class StaffGui {
         Separator line2 = new Separator();
         Text title = new Text(320, 100, "Staff Section");
         title.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 25));
-        header.getChildren().addAll(line1, title);
+//        header.getChildren().addAll(line1, title);
 
+        /**Button Section**/
+        HBox staffMenu = new HBox(10);
+        Button newStaff = new Button("Add New Staff", new ImageView("Images/add.png"));
+
+        newStaff.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
+
+        staffMenu.getChildren().addAll(newStaff);
+        staffMenu.setAlignment(Pos.CENTER);
         pane.setTop(header);
+
+        header.getChildren().addAll(line1, title, line2, staffMenu);
+        pane.setTop(header);
+        
 
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
