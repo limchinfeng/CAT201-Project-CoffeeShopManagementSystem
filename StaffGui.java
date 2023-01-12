@@ -51,19 +51,18 @@ public class StaffGui {
         Button showStaffList = new Button("Existing Staffs List", new ImageView("Images/list.png"));
         Button delStaff = new Button("Delete staff Record", new ImageView("Images/delete.png"));
         Button printStaffList = new Button("Print", new ImageView("Images/txt.png"));
+        Button mainMenu = new Button("Back to Menu", new ImageView("Images/home.png"));
 
         newStaff.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
         showStaffList.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
         delStaff.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
         printStaffList.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
-
-        staffMenu.getChildren().addAll(newStaff, showStaffList, delStaff,printStaffList);
+        staffMenu.getChildren().addAll(newStaff, showStaffList, delStaff, printStaffList);
         staffMenu.setAlignment(Pos.CENTER);
-        pane.setTop(header);
 
         header.getChildren().addAll(line1, title, line2, staffMenu);
         pane.setTop(header);
-
+        pane.setBottom(mainMenu);
 
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
