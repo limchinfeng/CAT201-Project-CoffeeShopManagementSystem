@@ -64,6 +64,53 @@ public class StaffGui {
         pane.setTop(header);
         pane.setBottom(mainMenu);
 
+        //To prompt staff's details from the user
+        GridPane staffPrompt = new GridPane();
+        staffPrompt.setPadding(new Insets(20));
+        staffPrompt.setHgap(5);
+        staffPrompt.setVgap(5);
+
+        TextField id = new TextField();
+        TextField name = new TextField();
+        TextField designation = new TextField();
+        TextField sex = new TextField();
+        TextField salary = new TextField();
+        Button btAdd = new Button("Add staff");
+
+        staffPrompt.add(new Text("Key in the staff's details"), 0, 0);
+        staffPrompt.add(new Label("Enter Staff ID: "), 0, 1);
+        staffPrompt.add(id, 1, 1);
+        staffPrompt.add(new Label("Enter Staff Name: "), 0, 2);
+        staffPrompt.add(name, 1, 2);
+        staffPrompt.add(new Label("Enter Staff Designation: "), 0, 3);
+        staffPrompt.add(designation, 1, 3);
+        staffPrompt.add(new Label("Enter Staff Sex: "), 0, 4);
+        staffPrompt.add(sex, 1, 4);
+        staffPrompt.add(new Label("Enter Staff Salary: "), 0, 5);
+        staffPrompt.add(salary, 1, 5);
+        staffPrompt.add(btAdd, 1, 6);
+
+        Scene addStaffPromptScene = new Scene(staffPrompt);
+
+        newStaff.setOnAction(e->{
+
+            promptStage.setScene(addStaffPromptScene);
+            promptStage.setTitle("Staff Details");
+            promptStage.show();
+
+            btAdd.setOnAction(ev->{
+                String Id = id.getText();
+                String n = name.getText();
+                String d = designation.getText();
+                String s = sex.getText();
+                int sly = Integer.parseInt(salary.getText());
+                staff.add(new Staff(Id,n,d,s,sly));
+                JOptionPane.showMessageDialog(null, "The new staff's record have been added to "
+                        + "the list. You can check the list by clicking the Existing Staffs List button");
+                promptStage.close();
+            });
+        });
+
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
         stage.setTitle("Order Section");
