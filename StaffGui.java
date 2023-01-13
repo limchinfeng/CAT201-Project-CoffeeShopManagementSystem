@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 
 public class StaffGui {
 
+    private static int index;
     public static void main(ArrayList<Staff> staff) {
         Stage stage = new Stage();
         Stage promptStage = new Stage();
@@ -92,6 +93,21 @@ public class StaffGui {
 
         Scene addStaffPromptScene = new Scene(staffPrompt);
 
+        //To prompt staff detail to be deleted
+        GridPane deleteStaff = new GridPane();
+        deleteStaff.setPadding(new Insets(20));
+        deleteStaff.setHgap(5);
+        deleteStaff.setVgap(5);
+
+        TextField delname = new TextField();
+        Button btDel = new Button("Delete");
+
+        deleteStaff.add(new Text("Please enter the staff's ID to be deleted"), 0, 0);
+        deleteStaff.add(delname, 0, 1);
+        deleteStaff.add(btDel, 0, 2);
+
+        Scene delStaffScene = new Scene(deleteStaff);
+
         newStaff.setOnAction(e->{
 
             promptStage.setScene(addStaffPromptScene);
@@ -106,6 +122,24 @@ public class StaffGui {
                 int sly = Integer.parseInt(salary.getText());
                 staff.add(new Staff(Id,n,d,s,sly));
                 JOptionPane.showMessageDialog(null, "The new staff's record have been added to "
+                        + "the list. You can check the list by clicking the Existing Staffs List button");
+                promptStage.close();
+            });
+        });
+
+        delStaff.setOnAction(e->{
+            promptStage.setScene(delStaffScene);
+            promptStage.setTitle("Delete Record");
+            promptStage.show();
+
+            btDel.setOnAction(ev->{
+                for(int i = 0; i < staff.size() ; i++) {
+                    if (staff.get(i).getId().equals(delname.getText())) {
+                        index = i;
+                        staff.remove(index);
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "The specific staff's record have been deleted from "
                         + "the list. You can check the list by clicking the Existing Staffs List button");
                 promptStage.close();
             });
