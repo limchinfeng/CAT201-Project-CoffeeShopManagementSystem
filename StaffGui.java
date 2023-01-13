@@ -168,7 +168,7 @@ public class StaffGui {
             table.setPadding(new Insets(8));
             pane.setCenter(table);
         });
-        
+
         delStaff.setOnAction(e->{
             promptStage.setScene(delStaffScene);
             promptStage.setTitle("Delete Record");
@@ -185,6 +185,31 @@ public class StaffGui {
                         + "the list. You can check the list by clicking the Existing Staffs List button");
                 promptStage.close();
             });
+        });
+
+        printStaffList.setOnAction(e->{
+            try {
+                FileWriter infile = new FileWriter("txt/Staff Record.txt");
+
+                for(int i = 0; i < staff.size() ; i++) {
+                    infile.write(staff.get(i).getId()+"\t"+staff.get(i).getName()
+                            +"\t"+staff.get(i).getDesignation()+"\t"+staff.get(i).getSex()
+                            +"\t"+ staff.get(i).getSalary()+"\n");
+                }
+
+                infile.close();
+                JOptionPane.showMessageDialog(null, "Successfully write information into the text file.");
+            }
+
+            catch (IOException ev) {
+                JOptionPane.showMessageDialog(null, "An error occured when writing into the file.");
+                ev.printStackTrace();
+            }
+        });
+
+        mainMenu.setOnAction(e->{
+            stage.close();
+            CoffeeManagementGui.mainMenu(stage);
         });
 
         pane.setStyle("-fx-background-color: #ecf4f4");
