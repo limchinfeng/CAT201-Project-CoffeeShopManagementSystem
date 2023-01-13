@@ -127,6 +127,48 @@ public class StaffGui {
             });
         });
 
+        showStaffList.setOnAction(e->{
+
+            /**Table view of staff's details**/
+            TableView<Staff> staffTable = new TableView<Staff>();
+            TableColumn<Staff, String> column1 = new TableColumn<Staff, String>("ID");
+            column1.setCellValueFactory(new PropertyValueFactory<Staff, String>("id"));
+            column1.setPrefWidth(70);
+            column1.setResizable(false);
+
+            TableColumn<Staff, String> column2 = new TableColumn<Staff, String>("Name");
+            column2.setCellValueFactory(new PropertyValueFactory<Staff, String>("name"));
+            column2.setPrefWidth(200);
+            column2.setResizable(false);
+
+            TableColumn<Staff, String> column3 = new TableColumn<Staff, String>("Designation");
+            column3.setCellValueFactory(new PropertyValueFactory<Staff, String>("designation"));
+            column3.setPrefWidth(140);
+            column3.setResizable(false);
+
+            TableColumn<Staff, String> column4 = new TableColumn<Staff, String>("Sex");
+            column4.setCellValueFactory(new PropertyValueFactory<Staff, String>("sex"));
+            column4.setPrefWidth(130);
+            column4.setResizable(false);
+
+            TableColumn<Staff, Integer> column5 = new TableColumn<Staff, Integer>("Salary");
+            column5.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("salary"));
+            column5.setPrefWidth(130);
+            column5.setResizable(false);
+
+            staffTable.getColumns().addAll(column1, column2, column3, column4, column5);
+
+
+            for(int i = 0; i < staff.size(); i ++) {
+                staffTable.getItems().add(staff.get(i));
+            }
+
+
+            VBox table = new VBox(staffTable);
+            table.setPadding(new Insets(8));
+            pane.setCenter(table);
+        });
+        
         delStaff.setOnAction(e->{
             promptStage.setScene(delStaffScene);
             promptStage.setTitle("Delete Record");
