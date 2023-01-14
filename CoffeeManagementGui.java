@@ -33,10 +33,6 @@ public class CoffeeManagementGui {
     public static void mainMenu(Stage primaryStage) {
         //if order array list is empty, initialize the list with 4 object
         if (orderlist.isEmpty()) {
-//            orderlist.add(new OrderList("cappuccino", "Small", "Hot", "ad df", 11));
-//            orderlist.add(new OrderList("latte", "Large", "Cold", "ad d", 30));
-//            orderlist.add(new OrderList("black", "Medium", "Hot", "ad d", 28));
-//            orderlist.add(new OrderList("latte", "Large", "Hot", "adss s", 15));
 
             try{
                 double price;
@@ -62,9 +58,6 @@ public class CoffeeManagementGui {
 
         //if administrator array list is empty, initialize the list with 4 object
         if (administrator.isEmpty()) {
-//			administrator.add(new Administrator(157968,157968));
-//			administrator.add(new Administrator(123,123));
-//			administrator.add(new Administrator(1,1));
 
             try{
                 int username, password;
@@ -85,10 +78,6 @@ public class CoffeeManagementGui {
 
         //if coffee array list is empty, initialize the list with 4 object
         if (coffee.isEmpty()) {
-//			coffee.add(new Coffee("cappuccino",12));
-//			coffee.add(new Coffee("latte", 10));
-//			coffee.add(new Coffee("black", 8));
-//			coffee.add(new Coffee("Blood Bank",50));
 
             try{
                 double price;
@@ -110,10 +99,6 @@ public class CoffeeManagementGui {
 
         //if Staff array list is empty, initialize the list with 3 object
         if(staff.isEmpty()) {
-//			staff.add(new Staff("378", "Lim Chin Feng", "Manager", "Male", 6000));
-//			staff.add(new Staff("086", "Khoo Jia Xin", "Waiter", "Female", 4500));
-//			staff.add(new Staff("412", "Lee Jia Qian", "Cashier", "Female", 4500));
-//			staff.add(new Staff("143", "Tan Wei Xiang", "Barista", "Male", 5000));
 
             try{
                 int salary;
