@@ -36,13 +36,6 @@ public class LoginGui extends Application {
 
     public static void login(Stage primaryStage) {
 
-        // add test username and password into array list
-        if (admin.isEmpty()) {
-            admin.add(new Administrator(157968,157968));
-            admin.add(new Administrator(123,123));
-            admin.add(new Administrator(1,1));
-        }
-
         Stage stage = new Stage();
         BorderPane pane = new BorderPane();
         pane.setPadding(new Insets(10));
@@ -146,6 +139,24 @@ public class LoginGui extends Application {
             primaryStage.close();
             CoffeeManagementGui.mainMenu(stage);
         });
+
+        // get administrator username and password from txt file
+        try{
+            int FileUsername, FilePassword;
+            BufferedReader br = new BufferedReader(new FileReader("txt/Administrator Record.txt"));
+            String line = null;
+            while((line = br.readLine()) != null)
+            {
+                String tmp[] = line.split("\t");
+                FileUsername = Integer.parseInt(tmp[0]);
+                FilePassword = Integer.parseInt(tmp[1]);
+                admin.add(new Administrator(FileUsername,FilePassword));
+                System.out.println(FileUsername+" "+FilePassword);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
 
         //Add the pane to the scene and add the scene to the stage
