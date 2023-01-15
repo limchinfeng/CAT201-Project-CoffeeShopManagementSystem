@@ -1,10 +1,8 @@
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -93,6 +91,34 @@ public class AdministratorGui {
                         + "the list. You can check the list by clicking the Existing Administrators List button");
                 promptStage.close();
             });
+        });
+
+
+        /** Action listener to show all the administrator in table**/
+        showAdministratorList.setOnAction(e->{
+
+            /**Table view of Administrator's details**/
+            TableView<Administrator> AdministratorTable = new TableView<Administrator>();
+            TableColumn<Administrator, Integer> column1 = new TableColumn<Administrator, Integer>("Username");
+            column1.setCellValueFactory(new PropertyValueFactory<Administrator, Integer>("username"));
+            column1.setPrefWidth(340);
+            column1.setResizable(false);
+
+            TableColumn<Administrator, Integer> column2 = new TableColumn<Administrator, Integer>("Password");
+            column2.setCellValueFactory(new PropertyValueFactory<Administrator, Integer>("password"));
+            column2.setPrefWidth(330);
+            column2.setResizable(false);
+
+            AdministratorTable.getColumns().addAll(column1, column2);
+
+
+            for(int i = 0; i < administrator.size(); i ++) {
+                AdministratorTable.getItems().add(administrator.get(i));
+            }
+
+            VBox table = new VBox(AdministratorTable);
+            table.setPadding(new Insets(8));
+            pane.setCenter(table);
         });
 
 
