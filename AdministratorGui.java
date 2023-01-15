@@ -74,6 +74,21 @@ public class AdministratorGui {
         Scene addaAdministratorScene = new Scene(administratorPrompt);
 
 
+        /**Scene to delete administrator record**/
+        GridPane delAdministrator = new GridPane();
+        delAdministrator.setPadding(new Insets(20));
+        delAdministrator.setHgap(5);
+        delAdministrator.setVgap(5);
+
+        TextField delname = new TextField();
+        Button btDel = new Button("Delete");
+
+        delAdministrator.add(new Text("Please enter the username to be deleted"), 0, 0);
+        delAdministrator.add(delname, 0, 1);
+        delAdministrator.add(btDel, 0, 2);
+
+        Scene delAdministratorScene = new Scene(delAdministrator);
+
 
         /** Action listener to add new administrator **/
         newAdministrator.setOnAction(e->{
@@ -121,6 +136,26 @@ public class AdministratorGui {
             pane.setCenter(table);
         });
 
+
+        /** Action listener to delete administrator record**/
+        deleteAdministrator.setOnAction(e->{
+            promptStage.setScene(delAdministratorScene);
+            promptStage.setTitle("Delete Record");
+            promptStage.show();
+
+            btDel.setOnAction(ev->{
+                int index;
+                for(int i = 0; i < administrator.size() ; i++) {
+                    if (administrator.get(i).getUsername() == Integer.parseInt(delname.getText())) {
+                        index = i;
+                        administrator.remove(index);
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "The specific Administrator's record have been deleted from "
+                        + "the list. You can check the list by clicking the Existing Administrators List button");
+                promptStage.close();
+            });
+        });
 
 
         pane.setStyle("-fx-background-color: #ecf4f4");
