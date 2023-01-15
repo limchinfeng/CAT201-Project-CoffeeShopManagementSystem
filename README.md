@@ -1,10 +1,10 @@
 # CAT201-Project-Coffee Shop Management System
 
-Contributors 4
-LIM CHIN FENG
-KHOO JIA XIN
-LEE JIA QIAN
-TAN WEI XIANG
+## Contributors
+### LIM CHIN FENG
+### KHOO JIA XIN
+### LEE JIA QIAN
+### TAN WEI XIANG
 
 ## Step 1
 ### Import lib
