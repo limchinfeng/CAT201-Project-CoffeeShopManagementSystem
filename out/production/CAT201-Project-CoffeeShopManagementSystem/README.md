@@ -1,5 +1,11 @@
 # CAT201-Project-Coffee Shop Management System
 
+## Contributors
+##### LIM CHIN FENG
+##### KHOO JIA XIN
+##### LEE JIA QIAN
+##### TAN WEI XIANG
+
 ## Step 1
 ### Import lib
 #### lib > awt jar java > all jar files
@@ -11,4 +17,4 @@
 #### make LoginGui class as main class
 
 ## Step 3
-###Happy Coding
+### Happy Coding

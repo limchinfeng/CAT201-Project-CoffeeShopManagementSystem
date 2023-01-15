@@ -56,7 +56,7 @@ public class AdministratorGui {
         pane.setBottom(mainMenu);
 
 
-        /**Scene to prompt the user to enter the new administrator's details**/
+        /** Scene to prompt the user to enter the new administrator's details **/
         GridPane administratorPrompt = new GridPane();
         administratorPrompt.setPadding(new Insets(20));
         administratorPrompt.setHgap(5);
@@ -77,8 +77,7 @@ public class AdministratorGui {
 
 
 
-
-        /** Action listener to add new administrator**/
+        /** Action listener to add new administrator **/
         newAdministrator.setOnAction(e->{
 
             promptStage.setScene(addaAdministratorScene);
