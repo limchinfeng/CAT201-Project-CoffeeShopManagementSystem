@@ -179,6 +179,13 @@ public class AdministratorGui {
             }
         });
 
+        
+        /** Action listener to return to main menu stage**/
+        mainMenu.setOnAction(e->{
+            stage.close();
+            CoffeeManagementGui.mainMenu(stage);
+        });
+
 
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
