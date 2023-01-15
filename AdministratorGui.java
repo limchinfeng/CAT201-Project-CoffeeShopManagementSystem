@@ -15,6 +15,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AdministratorGui {
@@ -155,6 +157,26 @@ public class AdministratorGui {
                         + "the list. You can check the list by clicking the Existing Administrators List button");
                 promptStage.close();
             });
+        });
+
+
+        /** Action listener to print all the administrator in txt file**/
+        printAdministrator.setOnAction(e->{
+            try {
+                FileWriter writefile = new FileWriter("txt/Administrator Record.txt");
+
+                for(int i = 0; i < administrator.size() ; i++) {
+                    writefile.write(administrator.get(i).getUsername()+"\t"+administrator.get(i).getPassword()+"\n");
+                }
+
+                writefile.close();
+                JOptionPane.showMessageDialog(null, "Successfully write information into the text file.");
+            }
+
+            catch (IOException ev) {
+                JOptionPane.showMessageDialog(null, "An error occured when writing into the file.");
+                ev.printStackTrace();
+            }
         });
 
 
