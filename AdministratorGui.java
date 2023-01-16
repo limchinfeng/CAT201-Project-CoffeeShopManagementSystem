@@ -179,7 +179,7 @@ public class AdministratorGui {
             }
         });
 
-        
+
         /** Action listener to return to main menu stage**/
         mainMenu.setOnAction(e->{
             stage.close();
@@ -187,6 +187,7 @@ public class AdministratorGui {
         });
 
 
+        /** Add the pane to the scene and add the scene to the stage **/
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
         stage.setTitle("Administrator Section");

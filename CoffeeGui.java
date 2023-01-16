@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 
 public class CoffeeGui {
     private static int index;
-    @SuppressWarnings("unchecked")
+
     public static void main(ArrayList<Coffee> coffee) {
 
         Stage stage = new Stage();
@@ -64,7 +64,7 @@ public class CoffeeGui {
         pane.setBottom(mainMenu);
 
 
-        //To prompt staff's details from the user
+        /** Scene to prompt user to enter new coffee's details **/
         GridPane coffeePrompt = new GridPane();
         coffeePrompt.setPadding(new Insets(20));
         coffeePrompt.setHgap(5);
@@ -84,7 +84,7 @@ public class CoffeeGui {
         Scene addCoffeeScene = new Scene(coffeePrompt);
 
 
-        //Delete Coffee details from the user input
+        /**Scene to delete coffee record from the list **/
         GridPane delCoffee = new GridPane();
         delCoffee.setPadding(new Insets(20));
         delCoffee.setHgap(5);
@@ -100,6 +100,7 @@ public class CoffeeGui {
         Scene delCoffeeScene = new Scene(delCoffee);
 
 
+        /** Action listener to add new coffee to the list **/
         newCoffee.setOnAction(e->{
 
             promptStage.setScene(addCoffeeScene);
@@ -117,6 +118,7 @@ public class CoffeeGui {
         });
 
 
+        /** Action listener to show all the coffee in table **/
         showCoffeeList.setOnAction(e->{
 
             /**Table view of Coffee's details**/
@@ -143,6 +145,7 @@ public class CoffeeGui {
         });
 
 
+        /** Action listener to delete coffee record **/
         deleteCoffee.setOnAction(e->{
             promptStage.setScene(delCoffeeScene);
             promptStage.setTitle("Delete Record");
@@ -162,6 +165,7 @@ public class CoffeeGui {
         });
 
 
+        /** Action listener to print all the coffee in txt file **/
         printCoffeeList.setOnAction(e->{
             try {
                 FileWriter writefile = new FileWriter("txt/Coffee Record.txt");
@@ -181,12 +185,14 @@ public class CoffeeGui {
         });
 
 
+        /** Action listener to return to main menu stage**/
         mainMenu.setOnAction(e->{
             stage.close();
             CoffeeManagementGui.mainMenu(stage);
         });
 
 
+        /** Add the pane to the scene and add the scene to the stage **/
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
         stage.setTitle("Coffee Section");

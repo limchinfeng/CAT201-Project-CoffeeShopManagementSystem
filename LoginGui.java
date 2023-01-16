@@ -63,20 +63,22 @@ public class LoginGui extends Application {
         DateFormat dateFormat = new SimpleDateFormat(dateFormatString);
         String currentDate = dateFormat.format(date);
 
-
+        // set the font
         Label dateNow = new Label(currentDate, new ImageView("Images/date.png"));
         Label time = new Label(currentTime, new ImageView("Images/time.png"));
         dateNow.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 18));
         time.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 18));
         hb.getChildren().addAll(dateNow, time);
         hb.setAlignment(Pos.CENTER);
-
         Text lg = new Text("Login");
         lg.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 40));
 
+        // set pane header
         header.getChildren().addAll(line1, title, line2, hb, lg);
         pane.setTop(header);
 
+
+        /** Login Scene  **/
         GridPane prompt = new GridPane();
         prompt.setPadding(new Insets(20));
         prompt.setHgap(15);
@@ -102,7 +104,7 @@ public class LoginGui extends Application {
         pane.setBottom(exit);
 
 
-        /**Login Button Function**/
+        /** Login Button Function **/
         btLogin.setOnAction(ev->{
 
             try{
@@ -134,13 +136,13 @@ public class LoginGui extends Application {
         });
 
 
-        /** Exit**/
+        /** Exit **/
         exit.setOnAction(e -> {
             primaryStage.close();
             CoffeeManagementGui.mainMenu(stage);
         });
 
-        // get administrator username and password from txt file
+        /** get username and password from Administrator Record.txt file **/
         try{
             int FileUsername, FilePassword;
             BufferedReader br = new BufferedReader(new FileReader("txt/Administrator Record.txt"));
@@ -151,7 +153,7 @@ public class LoginGui extends Application {
                 FileUsername = Integer.parseInt(tmp[0]);
                 FilePassword = Integer.parseInt(tmp[1]);
                 admin.add(new Administrator(FileUsername,FilePassword));
-                System.out.println(FileUsername+" "+FilePassword);
+//                System.out.println(FileUsername+" "+FilePassword);
             }
         }
         catch (Exception e){
@@ -159,7 +161,7 @@ public class LoginGui extends Application {
         }
 
 
-        //Add the pane to the scene and add the scene to the stage
+        /** Add the pane to the scene and add the scene to the stage **/
         Scene scene = new Scene(pane, 700, 500);
         primaryStage.setTitle("Login System");
         primaryStage.setScene(scene);

@@ -48,7 +48,7 @@ public class CoffeeManagementGui {
                     addon = tmp[3];
                     price = Double.parseDouble(tmp[4]);
                     orderlist.add(new OrderList(cffe,size,type,addon,price));
-                    System.out.println(cffe+" "+price+" "+type+" "+addon+" "+price);
+//                    System.out.println(cffe+" "+price+" "+type+" "+addon+" "+price);
                 }
             } catch (Exception e){
                 e.printStackTrace();
@@ -69,7 +69,7 @@ public class CoffeeManagementGui {
                     username = Integer.parseInt(tmp[0]);
                     password = Integer.parseInt(tmp[1]);
                     administrator.add(new Administrator(username,password));
-                    System.out.println(username+" "+password);
+//                    System.out.println(username+" "+password);
                 }
             } catch (Exception e){
                 e.printStackTrace();
@@ -90,7 +90,7 @@ public class CoffeeManagementGui {
                     cffe = tmp[0];
                     price = Double.parseDouble(tmp[1]);
                     coffee.add(new Coffee(cffe,price));
-                    System.out.println(cffe+" "+price);
+//                    System.out.println(cffe+" "+price);
                 }
             } catch (Exception e){
                 e.printStackTrace();
@@ -114,7 +114,7 @@ public class CoffeeManagementGui {
                     sex = tmp[3];
                     salary = Integer.parseInt(tmp[4]);
                     staff.add(new Staff(id,name,designation,sex,salary));
-                    System.out.println(id+" "+name+" "+designation+" "+sex+" "+salary);
+//                    System.out.println(id+" "+name+" "+designation+" "+sex+" "+salary);
                 }
             } catch (Exception e){
                 e.printStackTrace();
