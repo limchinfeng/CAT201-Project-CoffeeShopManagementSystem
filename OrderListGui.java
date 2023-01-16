@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class OrderListGui {
 
     private static int index;
-    @SuppressWarnings("unchecked")
+
     public static void main(ArrayList<OrderList> orderlist) {
 
         Stage stage = new Stage();
@@ -55,6 +55,7 @@ public class OrderListGui {
         orderListMenu.setAlignment(Pos.CENTER);
 
 
+        /**Pane header and bottom**/
         header.getChildren().addAll(line1, title, line2, orderListMenu);
         pane.setTop(header);
 
@@ -63,7 +64,7 @@ public class OrderListGui {
         pane.setBottom(bottom);
 
 
-        //To prompt staff's details from the user
+        /**Scene to prompt the user to enter the new order list's details**/
         GridPane addOrderprompt = new GridPane();
         addOrderprompt.setPadding(new Insets(20));
         addOrderprompt.setHgap(5);
@@ -92,7 +93,7 @@ public class OrderListGui {
         Scene addOrderpromptScene = new Scene(addOrderprompt);
 
 
-        //Delete lab details from the user input
+        /** Scene to delete order list record**/
         GridPane delOrder = new GridPane();
         delOrder.setPadding(new Insets(20));
         delOrder.setHgap(5);
@@ -107,6 +108,7 @@ public class OrderListGui {
 
         Scene delOrderScene = new Scene(delOrder);
 
+        /** Action listener to add new order list **/
         newOrderRecord.setOnAction(e->{
 
             promptStage.setScene(addOrderpromptScene);
@@ -128,6 +130,8 @@ public class OrderListGui {
             });
         });
 
+
+        /** Action listener to show all the order list details in table**/
         showOrderList.setOnAction(e->{
 
             /**Table view of order list's details**/
@@ -169,6 +173,7 @@ public class OrderListGui {
                 OrderListTable.getItems().add(orderlist.get(i));
             }
 
+            // calculate total price
             String TotalAmount="";
             if(orderlist.isEmpty())
             {
@@ -185,6 +190,8 @@ public class OrderListGui {
             pane.setCenter(table);
         });
 
+
+        /** Action listener to delete order list record**/
         delOrderRecord.setOnAction(e->{
             promptStage.setScene(delOrderScene);
             promptStage.setTitle("Delete Record");
@@ -201,14 +208,12 @@ public class OrderListGui {
                         break;
                     }
                 }
-//                JOptionPane.showMessageDialog(null, "The specific order's record have been deleted from "
-//                        + "the list. You can check the list by clicking the Existing Orders List button");
                 promptStage.close();
             });
         });
 
 
-        // write order list to text file
+        /** Action listener to print all the order list details in txt file **/
         PrintOrderList.setOnAction(e->{
             try {
                 FileWriter writefile = new FileWriter("txt/Order List Record.txt");
@@ -229,12 +234,14 @@ public class OrderListGui {
         });
 
 
+        /** Action listener to return to main menu stage**/
         mainMenu.setOnAction(e->{
             stage.close();
             CoffeeManagementGui.mainMenu(stage);
         });
 
 
+        /** Add the pane to the scene and add the scene to the stage **/
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
         stage.setTitle("Order List Section");

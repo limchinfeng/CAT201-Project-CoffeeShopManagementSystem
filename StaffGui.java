@@ -32,7 +32,6 @@ public class StaffGui {
         Stage stage = new Stage();
         Stage promptStage = new Stage();
 
-
         BorderPane pane = new BorderPane();
         pane.setPadding(new Insets(10));
 
@@ -44,7 +43,7 @@ public class StaffGui {
         Separator line2 = new Separator();
         Text title = new Text(320, 100, "Staff Section");
         title.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 25));
-//        header.getChildren().addAll(line1, title);
+
 
         /**Button Section**/
         HBox staffMenu = new HBox(10);
@@ -61,11 +60,14 @@ public class StaffGui {
         staffMenu.getChildren().addAll(newStaff, showStaffList, delStaff, printStaffList);
         staffMenu.setAlignment(Pos.CENTER);
 
+
+        /** Pane header and bottom **/
         header.getChildren().addAll(line1, title, line2, staffMenu);
         pane.setTop(header);
         pane.setBottom(mainMenu);
 
-        //To prompt staff's details from the user
+
+        /**Scene to prompt the user to enter the new administrator's details**/
         GridPane staffPrompt = new GridPane();
         staffPrompt.setPadding(new Insets(20));
         staffPrompt.setHgap(5);
@@ -93,7 +95,8 @@ public class StaffGui {
 
         Scene addStaffPromptScene = new Scene(staffPrompt);
 
-        //To prompt staff detail to be deleted
+
+        /**Scene to delete staff record**/
         GridPane deleteStaff = new GridPane();
         deleteStaff.setPadding(new Insets(20));
         deleteStaff.setHgap(5);
@@ -108,6 +111,8 @@ public class StaffGui {
 
         Scene delStaffScene = new Scene(deleteStaff);
 
+
+        /** Action listener to add new staff **/
         newStaff.setOnAction(e->{
 
             promptStage.setScene(addStaffPromptScene);
@@ -127,6 +132,8 @@ public class StaffGui {
             });
         });
 
+
+        /** Action listener to show all the staff details in table**/
         showStaffList.setOnAction(e->{
 
             /**Table view of staff's details**/
@@ -163,12 +170,13 @@ public class StaffGui {
                 staffTable.getItems().add(staff.get(i));
             }
 
-
             VBox table = new VBox(staffTable);
             table.setPadding(new Insets(8));
             pane.setCenter(table);
         });
 
+
+        /** Action listener to delete staff record**/
         delStaff.setOnAction(e->{
             promptStage.setScene(delStaffScene);
             promptStage.setTitle("Delete Record");
@@ -187,6 +195,8 @@ public class StaffGui {
             });
         });
 
+
+        /** Action listener to print all the staff details in txt file**/
         printStaffList.setOnAction(e->{
             try {
                 FileWriter infile = new FileWriter("txt/Staff Record.txt");
@@ -207,11 +217,15 @@ public class StaffGui {
             }
         });
 
+
+        /** Action listener to return to main menu stage**/
         mainMenu.setOnAction(e->{
             stage.close();
             CoffeeManagementGui.mainMenu(stage);
         });
 
+
+        /** Add the pane to the scene and add the scene to the stage **/
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
         stage.setTitle("Order Section");

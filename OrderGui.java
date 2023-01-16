@@ -52,12 +52,14 @@ public class OrderGui {
         Button addOrder = new Button("Add",new ImageView("Images/add.png"));
         Button orderPayment = new Button("Payment",new ImageView("Images/payment.png"));
 
+
         /**Center Section**/
         HBox centre = new HBox(10);
         centre.setSpacing(50);
         centre.setAlignment(Pos.CENTER);
 
 
+        /** Radio button for Coffee **/
         ToggleGroup coffeeGroup = new ToggleGroup();
         RadioButton [] coffeeButton = new RadioButton[10];
         Text coffeeTitle = new Text(320, 100, "Coffee");
@@ -73,6 +75,8 @@ public class OrderGui {
             coffeeButton[j].setToggleGroup(coffeeGroup);
         }
 
+
+        /** Radio button for Coffee Size **/
         String [] size = {"Small","Medium","Large"};
         ToggleGroup sizeGroup = new ToggleGroup();
         RadioButton [] sizeButton = new RadioButton[10];
@@ -89,6 +93,8 @@ public class OrderGui {
             sizeButton[j].setToggleGroup(sizeGroup);
         }
 
+
+        /** Radio button for Coffee Type **/
         String [] type = {"Hot","Cold"};
         ToggleGroup typeGroup = new ToggleGroup();
         RadioButton [] typeButton = new RadioButton[10];
@@ -105,6 +111,8 @@ public class OrderGui {
             typeButton[j].setToggleGroup(typeGroup);
         }
 
+
+        /** Radio button for Add On **/
         String [] addOn = {"Caramel","Mocha","Double Chocolate","Strawberry",
                 "Whipped Cream","Chocolate Syrup","Berries"};
         RadioButton [] addOnButton = new RadioButton[10];
@@ -121,6 +129,7 @@ public class OrderGui {
         }
 
 
+        /** button font and image **/
         Button mainMenu = new Button("Back to Menu", new ImageView("Images/home.png"));
 
         showCoffee.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.REGULAR, 15));
@@ -132,6 +141,8 @@ public class OrderGui {
         orderMenu.getChildren().addAll(deleteOrder,showCoffee,orderCoffee, printOrder,addOrder,orderPayment);
         orderMenu.setAlignment(Pos.CENTER);
 
+
+        /**Pane header, centre and bottom**/
         header.getChildren().addAll(line1, title, line2, orderMenu);
         pane.setTop(header);
         centre.getChildren().addAll(coffeeColumn, sizeColumn, typeColumn,addOnColumn );
@@ -139,7 +150,7 @@ public class OrderGui {
         pane.setBottom(mainMenu);
 
 
-        //Payment
+        /**Scene for the payment **/
         GridPane paymentOrder = new GridPane();
         paymentOrder.setPadding(new Insets(20));
         paymentOrder.setHgap(5);
@@ -158,7 +169,8 @@ public class OrderGui {
 
         Scene paymentScene = new Scene(paymentOrder);
 
-        //Delete Coffee details from the user input
+
+        /** Scene to delete order record **/
         GridPane delOrder = new GridPane();
         delOrder.setPadding(new Insets(20));
         delOrder.setHgap(5);
@@ -173,7 +185,8 @@ public class OrderGui {
 
         Scene delScene = new Scene(delOrder);
 
-        // delete single order
+
+        /** Action listener to delete order record **/
         deleteOrder.setOnAction(e->{
 
             promptStage.setScene(delScene);
@@ -193,12 +206,13 @@ public class OrderGui {
                 }
                 promptStage.close();
             });
-
         });
 
+
+        /** Action listener show all the available coffee in table **/
         showCoffee.setOnAction(e->{
 
-            /**Table view of Coffee's details**/
+            /** Table view of Coffee's details **/
             TableView<Coffee> CoffeeTable = new TableView<Coffee>();
             TableColumn<Coffee, String> column1 = new TableColumn<Coffee, String>("Coffee");
             column1.setCellValueFactory(new PropertyValueFactory<Coffee, String>("coffee"));
@@ -222,13 +236,13 @@ public class OrderGui {
 
         });
 
-        // show order page
+        /** Action listener to show the order scene for the ordering **/
         orderCoffee.setOnAction(e->{
             pane.setCenter(centre);
         });
 
 
-        // current order
+        /** Action listener to show all the order in table**/
         printOrder.setOnAction(e->{
 
             /**Table view of order list's details**/
@@ -270,6 +284,7 @@ public class OrderGui {
                 OrderTable.getItems().add(order.get(i));
             }
 
+            // calculate total order price
             String totalPrice="";
             if(order.isEmpty())
             {
@@ -279,7 +294,7 @@ public class OrderGui {
                 totalPrice = "Total : RM" + Double.toString(order.get(0).getTotal());
             }
 
-            System.out.println(totalPrice);
+//            System.out.println(totalPrice);
             Label totalOrder = new Label(totalPrice, new ImageView("Images/price.png"));
 
             VBox table = new VBox(5);
@@ -289,12 +304,14 @@ public class OrderGui {
 
         });
 
-        // add order
+
+        /** Action listener to add new order **/
         addOrder.setOnAction(e->{
             double total=0;
             int AddOn = 0;
             String c="", t="", s="", a=".";
 
+            // add coffee to the current order
             for(int j=0; j<coffee.size(); j++)
             {
                 if(coffeeButton[j].isSelected())
@@ -305,6 +322,7 @@ public class OrderGui {
                 }
             }
 
+            // add coffee type to the current order
             for(int j=0; j<type.length; j++)
             {
                 if(typeButton[j].isSelected())
@@ -314,6 +332,7 @@ public class OrderGui {
                 }
             }
 
+            // add the coffee size to the current order
             for(int j=0; j<size.length; j++)
             {
                 if(sizeButton[j].isSelected())
@@ -337,20 +356,22 @@ public class OrderGui {
 
             for(int j=0; j<addOn.length; j++)
             {
+                // add addon to the current order if the button is selected
                 if(addOnButton[j].isSelected()) {
                     AddOn += 1;
                     a = addOnButton[j].getText()+","+a;
                 }
             }
             total+= AddOn;
+
+            // will only add the order if coffee,size and type is not empty
             if(total != 0 && c!="" && s!="" && t!="")
                 order.add(new Order(c,s,t,a,total));
-
-            System.out.println(c +" "+s+" "+t+" "+a+" "+total);
-
+//            System.out.println(c +" "+s+" "+t+" "+a+" "+total);
         });
 
 
+        /** Action listener to pay the payment **/
         orderPayment.setOnAction(e->{
             double total = 0;
             for(int j=0; j< order.size(); j++)
@@ -362,6 +383,8 @@ public class OrderGui {
             promptStage.setTitle("Payment : RM" + total);
             promptStage.show();
 
+
+            // action listener to pay the payment and calculate the remainder
             btPayment.setOnAction(ev->{
                 double T=0;
                 for(int j=0; j< order.size(); j++)
@@ -394,6 +417,7 @@ public class OrderGui {
                 }
             });
 
+            // Action listener to print order details in txt file
             btPrint.setOnAction(ev->{
                 try {
                     FileWriter writefile = new FileWriter("txt/Order Record.txt");
@@ -416,12 +440,14 @@ public class OrderGui {
         });
 
 
+        /** Action listener to return to main menu stage**/
         mainMenu.setOnAction(e->{
             stage.close();
             CoffeeManagementGui.mainMenu(stage);
         });
 
 
+        /** Add the pane to the scene and add the scene to the stage **/
         pane.setStyle("-fx-background-color: #ecf4f4");
         Scene scene = new Scene(pane, 700, 500);
         stage.setTitle("Order Section");

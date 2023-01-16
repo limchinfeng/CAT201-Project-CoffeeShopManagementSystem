@@ -139,7 +139,7 @@ public class LoginGui extends Application {
         /** Exit **/
         exit.setOnAction(e -> {
             primaryStage.close();
-            CoffeeManagementGui.mainMenu(stage);
+//            CoffeeManagementGui.mainMenu(stage);
         });
 
         /** get username and password from Administrator Record.txt file **/
