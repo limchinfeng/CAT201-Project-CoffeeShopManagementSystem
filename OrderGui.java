@@ -379,10 +379,15 @@ public class OrderGui {
                 total += order.get(j).getPrice();
             }
 
-            promptStage.setScene(paymentScene);
-            promptStage.setTitle("Payment : RM" + total);
-            promptStage.show();
-
+            if(total==0)
+            {
+                JOptionPane.showMessageDialog(null, "You haven't order yet!");
+            }
+            else{
+                promptStage.setScene(paymentScene);
+                promptStage.setTitle("Payment : RM" + total);
+                promptStage.show();
+            }
 
             // action listener to pay the payment and calculate the remainder
             btPayment.setOnAction(ev->{
@@ -399,6 +404,7 @@ public class OrderGui {
                 if (remainder < 0)
                 {
                     JOptionPane.showMessageDialog(null, "Your payment should be more than total price : RM" + T + ". Please pay again");
+                    promptStage.close();
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Thank you! Remainder :RM" + remainder);
@@ -413,7 +419,7 @@ public class OrderGui {
                     }
                     promptStage.close();
                     stage.close();
-                    CoffeeManagementGui.mainMenu(stage);
+                    OrderGui.main(orderlist, coffee);
                 }
             });
 

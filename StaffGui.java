@@ -49,7 +49,7 @@ public class StaffGui {
         HBox staffMenu = new HBox(10);
         Button newStaff = new Button("Add New Staff", new ImageView("Images/add.png"));
         Button showStaffList = new Button("Existing Staffs List", new ImageView("Images/list.png"));
-        Button delStaff = new Button("Delete staff Record", new ImageView("Images/delete.png"));
+        Button delStaff = new Button("Delete Staff Record", new ImageView("Images/delete.png"));
         Button printStaffList = new Button("Print", new ImageView("Images/txt.png"));
         Button mainMenu = new Button("Back to Menu", new ImageView("Images/home.png"));
 

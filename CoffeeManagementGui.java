@@ -31,7 +31,8 @@ public class CoffeeManagementGui {
     public static ArrayList<Staff> staff = new ArrayList<Staff>(25);
     public static ArrayList<Administrator> administrator = new ArrayList<Administrator>(25);
     public static void mainMenu(Stage primaryStage) {
-        //if order array list is empty, initialize the list with 4 object
+
+        /** Read order list record from txt file **/
         if (orderlist.isEmpty()) {
 
             try{
@@ -56,7 +57,7 @@ public class CoffeeManagementGui {
 
         }
 
-        //if administrator array list is empty, initialize the list with 4 object
+        /** Read administrator record from txt file **/
         if (administrator.isEmpty()) {
 
             try{
@@ -76,7 +77,7 @@ public class CoffeeManagementGui {
             }
         }
 
-        //if coffee array list is empty, initialize the list with 4 object
+        /** Read coffee record from txt file **/
         if (coffee.isEmpty()) {
 
             try{
@@ -97,7 +98,7 @@ public class CoffeeManagementGui {
             }
         }
 
-        //if Staff array list is empty, initialize the list with 3 object
+        /** Read staff record from txt file **/
         if(staff.isEmpty()) {
 
             try{
@@ -190,9 +191,9 @@ public class CoffeeManagementGui {
         menuSec.add(menuChoice[4], 2, 0);
         menuSec.add(menuChoice[5], 2, 1);
         pane.setCenter(menuSec);
-//		pane.setBottom(exit);
 
-        /**Choice 1: Order**/
+
+        /** Choice 1: Order **/
         //When user move the mouse to the button will have shadow effect
         menuChoice[0].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
             menuChoice[0].setEffect(shadow);
@@ -207,7 +208,7 @@ public class CoffeeManagementGui {
             OrderGui.main(orderlist, coffee);
         });
 
-        /**Choice 2: Order List**/
+        /** Choice 2: Order List **/
         //When user move the mouse to the button will have shadow effect
         menuChoice[1].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
             menuChoice[1].setEffect(shadow);
@@ -222,7 +223,7 @@ public class CoffeeManagementGui {
             OrderListGui.main(orderlist);
         });
 
-        /**Choice 4: Coffee**/
+        /** Choice 3: Coffee **/
         //When user move the mouse to the button will have shadow effect
         menuChoice[2].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
             menuChoice[2].setEffect(shadow);
@@ -237,7 +238,7 @@ public class CoffeeManagementGui {
             CoffeeGui.main(coffee);
         });
 
-        /**Choice 6: Staff**/
+        /** Choice 4: Staff **/
         menuChoice[3].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
             menuChoice[3].setEffect(shadow);
         });
@@ -251,6 +252,7 @@ public class CoffeeManagementGui {
             StaffGui.main(staff);
         });
 
+        /** Choice 5: Administrator **/
         menuChoice[4].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
             menuChoice[4].setEffect(shadow);
         });
@@ -264,6 +266,7 @@ public class CoffeeManagementGui {
             AdministratorGui.main(administrator);
         });
 
+        /** Choice 6: Exit **/
         menuChoice[5].addEventHandler(MouseEvent.MOUSE_ENTERED, e->{
             menuChoice[5].setEffect(shadow);
         });
@@ -276,7 +279,7 @@ public class CoffeeManagementGui {
             primaryStage.close();
         });
 
-        //Add the pane to the scene and add the scene to the stage
+        /** Add the pane to the scene and add the scene to the stage **/
         Scene scene = new Scene(pane, 700, 500);
         primaryStage.setTitle("Coffee Shop Management System");
         primaryStage.setScene(scene);
