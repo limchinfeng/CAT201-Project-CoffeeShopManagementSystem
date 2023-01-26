@@ -318,6 +318,7 @@ public class OrderGui {
                 {
                     c = coffeeButton[j].getText();
                     total+= coffee.get(j).getPrice();
+                    coffeeButton[j].setSelected(false);
                     break;
                 }
             }
@@ -328,6 +329,7 @@ public class OrderGui {
                 if(typeButton[j].isSelected())
                 {
                     t = typeButton[j].getText();
+                    typeButton[j].setSelected(false);
                     break;
                 }
             }
@@ -341,6 +343,7 @@ public class OrderGui {
 
                     if(s == "Small")
                     {
+                        sizeButton[j].setSelected(false);
                         break;
                     }
                     else if(s == "Medium")
@@ -351,6 +354,8 @@ public class OrderGui {
                     {
                         total += 4;
                     }
+                    sizeButton[j].setSelected(false);
+                    break;
                 }
             }
 
@@ -360,6 +365,7 @@ public class OrderGui {
                 if(addOnButton[j].isSelected()) {
                     AddOn += 1;
                     a = addOnButton[j].getText()+","+a;
+                    addOnButton[j].setSelected(false);
                 }
             }
             total+= AddOn;
